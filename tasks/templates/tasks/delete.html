@@ -2,17 +2,16 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Update Task {{ title }}</title>
+    <title></title>
   </head>
   <body>
-    <h1>Update Task</h1>
+    <p>Are you sure you want to delete "{{ item }}" ?</p>
+    <a href="{% url 'list' %}">Cancel</a>
 
     <form method="POST" action="">
       {% csrf_token %}
-      {{ form }}
 
-      <input type="submit" name="Update Task">
+      <input type="submit" name="Confirm">
 
-    </form>
   </body>
 </html>

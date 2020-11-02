@@ -2,10 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    
     <title>My ToDo App</title>
   </head>
   <body>
-    <h1>ToDO App</h1>
+    <h1>ToDo App</h1>
 
     <form method="POST" action="/">
       {% csrf_token %}
@@ -17,7 +18,15 @@
 
     {% for task in tasks %}
       <div class="">
-        <p>{{ task }}</p>
+        <a href="{% url 'update_task' task.id %}">Update</a>
+        <a href="{% url 'delete' task.id %}">Delete</a>
+
+        {% if task.complete == True %}
+        <strike>{{ task }}</strike>
+        {% else %}
+        <span>{{ task }}</span>
+        {% endif %}
+
       </div>
     {% endfor %}
 
